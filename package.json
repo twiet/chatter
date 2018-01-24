@@ -2,7 +2,15 @@
   "name": "chatter",
   "version": "1.0.0",
   "description": "",
-  "scripts": {},
+  "scripts": {
+    "prestart": "babel-node tools/startMessage.js",
+    "start": "npm-run-all --parallel server eslint:watch",
+    "server": "babel-node tools/srcServer.js",
+    "eslint": "esw webpack.config.* src tools",
+    "eslint:watch": "npm run eslint -- --watch",
+    "test": "mocha --reporter progress tools/testSetup.js \"src/**/*.test.js\"",
+    "test:watch": "npm run test -- --watch"
+  },
   "author": "twiet",
   "license": "MIT",
   "dependencies": {
